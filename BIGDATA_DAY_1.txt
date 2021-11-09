@@ -1,0 +1,719 @@
+ak@ak:~$ jps
+4497 Jps
+ak@ak:~$ jps
+4509 Jps
+ak@ak:~$ start-all.sh
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-namenode-ak.out
+localhost: starting datanode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-datanode-ak.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-secondarynamenode-ak.out
+starting yarn daemons
+starting resourcemanager, logging to /home/ak/hadoop-2.10.1/logs/yarn-ak-resourcemanager-ak.out
+localhost: starting nodemanager, logging to /home/ak/hadoop-2.10.1/logs/yarn-ak-nodemanager-ak.out
+ak@ak:~$ jps
+5346 NodeManager
+5081 SecondaryNameNode
+4697 NameNode
+5659 Jps
+4844 DataNode
+5214 ResourceManager
+ak@ak:~$ jps
+5346 NodeManager
+5081 SecondaryNameNode
+4697 NameNode
+4844 DataNode
+6316 Jps
+5214 ResourceManager
+ak@ak:~$ hdfs dfs -mkdir /asutosh
+ak@ak:~$ hdfs dfs
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+ak@ak:~$ hadoop fs
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+ak@ak:~$ hdfs dfs -copyFromLocal /home/ak/datasets/emp.csv /asutosh
+ak@ak:~$ hdfs dfs -put /home/ak/datasets/emp.csv /asutosh
+put: `/asutosh/emp.csv': File exists
+ak@ak:~$ hdfs dfs -put -f /home/ak/datasets/emp.csv /asutosh
+ak@ak:~$ hdfs dfs -mkdir day1
+ak@ak:~$ hdfs dfs -setrep 2 /asutosh/emp.csv
+Replication 2 set: /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -setrep 3 /asutosh/emp.csv
+Replication 3 set: /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -put /home/ak/hadoop.zip day1
+ak@ak:~$ hdfs dfs -put /home/ak/hadoop.zip /asutosh
+ak@ak:~$ hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:18 /asutosh
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 /demo
+drwx-wx-wx   - ak supergroup          0 2021-10-30 15:09 /tmp
+drwxr-xr-x   - ak supergroup          0 2021-10-30 15:07 /user
+ak@ak:~$ hdfs dfs -rm /asutosh/emp.csv
+Deleted /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:24 /asutosh
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 /demo
+drwx-wx-wx   - ak supergroup          0 2021-10-30 15:09 /tmp
+drwxr-xr-x   - ak supergroup          0 2021-10-30 15:07 /user
+ak@ak:~$ hdfs dfs -ls 
+Found 2 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:06 day1
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 test
+ak@ak:~$ hdfs dfs -cp /asutosh/ /ak
+ak@ak:~$ hdfs dfs -put -f /home/ak/datasets/superstore.csv /asutosh
+ak@ak:~$ pwd
+/home/ak
+ak@ak:~$ hdfs dfs -appendToFile /home/ak/hadoop.zip /asutosh
+appendToFile: Cannot append to directory /asutosh; already exists as a directory.
+ak@ak:~$ hdfs dfs -appendToFile /home/ak/hadoop.zip /asutosh/hadoop.zip
+ak@ak:~$ hdfs dfs -get /asutosh/superstore.csv /home
+get: /home/superstore.csv._COPYING_ (Permission denied)
+ak@ak:~$ hive
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ak/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ak/hadoop-2.10.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = a598be36-407a-40d5-8a51-258758cf60a2
+
+Logging initialized using configuration in jar:file:/home/ak/apache-hive-3.1.2-bin/lib/hive-common-3.1.2.jar!/hive-log4j2.properties Async: true
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Hive Session ID = cba91736-8da6-4839-9f4d-4ce7cb8282af
+hive> show databases;
+OK
+ak
+default
+Time taken: 0.428 seconds, Fetched: 2 row(s)
+hive> create database ofsa;
+OK
+Time taken: 0.153 seconds
+hive> use ofsa;
+OK
+Time taken: 0.04 seconds
+hive> create table student (regno int, name string, cgpa int);
+OK
+Time taken: 0.476 seconds
+hive> insert into student values(1,'Asutosh',8)
+    > ;
+Query ID = ak_20211108170741_5ad71f5a-6470-4210-9add-065fb62b0110
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1636353910963_0001, Tracking URL = http://ak:8088/proxy/application_1636353910963_0001/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0001
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-11-08 17:07:53,324 Stage-1 map = 0%,  reduce = 0%
+2021-11-08 17:08:00,570 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.4 sec
+2021-11-08 17:08:05,739 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.49 sec
+MapReduce Total cumulative CPU time: 2 seconds 490 msec
+Ended Job = job_1636353910963_0001
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://localhost:9000/user/hive/warehouse/ofsa.db/student/.hive-staging_hive_2021-11-08_17-07-41_556_6469594955434367949-1/-ext-10000
+Loading data to table ofsa.student
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 2.49 sec   HDFS Read: 16461 HDFS Write: 273 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 490 msec
+OK
+Time taken: 25.852 seconds
+hive> select * from student;
+OK
+1	Asutosh	8
+Time taken: 0.24 seconds, Fetched: 1 row(s)
+hive> show tables;
+OK
+student
+Time taken: 0.023 seconds, Fetched: 1 row(s)
+hive> desc student
+    > ;
+OK
+regno               	int                 	                    
+name                	string              	                    
+cgpa                	int                 	                    
+Time taken: 0.088 seconds, Fetched: 3 row(s)
+hive> desc extended student;
+OK
+regno               	int                 	                    
+name                	string              	                    
+cgpa                	int                 	                    
+	 	 
+Detailed Table Information	Table(tableName:student, dbName:ofsa, owner:ak, createTime:1636371355, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:regno, type:int, comment:null), FieldSchema(name:name, type:string, comment:null), FieldSchema(name:cgpa, type:int, comment:null)], location:hdfs://localhost:9000/user/hive/warehouse/ofsa.db/student, inputFormat:org.apache.hadoop.mapred.TextInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=12, numRows=1, rawDataSize=11, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"cgpa\":\"true\",\"name\":\"true\",\"regno\":\"true\"}}, numFiles=1, transient_lastDdlTime=1636371487, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER)	
+Time taken: 0.087 seconds, Fetched: 5 row(s)
+hive> create table patient(pid INT, pname STRING, drug STRING,gender string, 
+    > tot_amt INT) row format delimited fields terminated by ',' stored as textfile;
+OK
+Time taken: 0.825 seconds
+hive> select * from patient
+    > ;
+OK
+Time taken: 0.9 seconds
+hive> load data local inpath '/home/dataset/patient.txt' into table patient;
+FAILED: SemanticException Line 1:23 Invalid path ''/home/dataset/patient.txt'': No files matching path file:/home/dataset/patient.txt
+hive> load data local inpath '/home/datasets/patient.txt' into table patient;
+FAILED: SemanticException Line 1:23 Invalid path ''/home/datasets/patient.txt'': No files matching path file:/home/datasets/patient.txt
+hive> load data local inpath '/home/ak/datasets/patient.txt' into table patient;
+Loading data to table ofsa.patient
+OK
+Time taken: 0.83 seconds
+hive> select * from patient;
+OK
+111	aaa	Para	m	900
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+Time taken: 0.315 seconds, Fetched: 27 row(s)
+hive> select count(*) from patient;
+Query ID = ak_20211108212435_a92be090-373a-4afd-801c-558014522c43
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1636353910963_0002, Tracking URL = http://ak:8088/proxy/application_1636353910963_0002/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-11-08 21:24:49,279 Stage-1 map = 0%,  reduce = 0%
+2021-11-08 21:24:57,690 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.32 sec
+2021-11-08 21:25:04,990 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 4.3 sec
+MapReduce Total cumulative CPU time: 4 seconds 300 msec
+Ended Job = job_1636353910963_0002
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 4.3 sec   HDFS Read: 13153 HDFS Write: 102 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 300 msec
+OK
+27
+Time taken: 30.396 seconds, Fetched: 1 row(s)
+hive> select * from patient where drug='Para'
+    > ;
+OK
+111	aaa	Para	m	900
+222	bbb	Para	f	999
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+222	bbb	Para	f	999
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+222	bbb	Para	f	999
+333	ccc	Para	m	444
+Time taken: 0.53 seconds, Fetched: 9 row(s)
+hive> select sum(amt) from patient;
+FAILED: SemanticException [Error 10004]: Line 1:11 Invalid table alias or column reference 'amt': (possible column names are: pid, pname, drug, gender, tot_amt)
+hive> select sum(tot_amt) from patient;
+Query ID = ak_20211108212820_0f50d929-1b8b-4c51-ba27-e8c65855b94d
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1636353910963_0003, Tracking URL = http://ak:8088/proxy/application_1636353910963_0003/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0003
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-11-08 21:28:29,223 Stage-1 map = 0%,  reduce = 0%
+2021-11-08 21:28:35,439 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.87 sec
+2021-11-08 21:28:42,756 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.47 sec
+MapReduce Total cumulative CPU time: 3 seconds 470 msec
+Ended Job = job_1636353910963_0003
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.47 sec   HDFS Read: 13390 HDFS Write: 105 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 470 msec
+OK
+17329
+Time taken: 23.485 seconds, Fetched: 1 row(s)
+hive> select drug,sum(tot_amt) from patient group by drug;
+Query ID = ak_20211108212919_ab7afade-62ff-4c27-88e9-88e5f7578ce8
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1636353910963_0004, Tracking URL = http://ak:8088/proxy/application_1636353910963_0004/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0004
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-11-08 21:29:26,698 Stage-1 map = 0%,  reduce = 0%
+2021-11-08 21:29:33,022 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.17 sec
+2021-11-08 21:29:39,224 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.97 sec
+MapReduce Total cumulative CPU time: 3 seconds 970 msec
+Ended Job = job_1636353910963_0004
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.97 sec   HDFS Read: 13955 HDFS Write: 228 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 970 msec
+OK
+Crocin	1800
+Para	6229
+calpol	1500
+cetzine	2100
+hcq	3300
+metacin	2400
+Time taken: 21.009 seconds, Fetched: 6 row(s)
+hive> insert overwrite local directory '/home/ak/results' select * from patient;
+Query ID = ak_20211108213025_4b226f50-7f14-4611-9fe6-0877cca60233
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1636353910963_0005, Tracking URL = http://ak:8088/proxy/application_1636353910963_0005/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2021-11-08 21:30:31,374 Stage-1 map = 0%,  reduce = 0%
+2021-11-08 21:30:37,591 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.48 sec
+MapReduce Total cumulative CPU time: 1 seconds 480 msec
+Ended Job = job_1636353910963_0005
+Moving data to local directory /home/ak/results
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 1.48 sec   HDFS Read: 5631 HDFS Write: 537 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 480 msec
+OK
+Time taken: 13.391 seconds
+hive> desc patient;
+OK
+pid                 	int                 	                    
+pname               	string              	                    
+drug                	string              	                    
+gender              	string              	                    
+tot_amt             	int                 	                    
+Time taken: 0.108 seconds, Fetched: 5 row(s)
+hive> desc extended patient;
+OK
+pid                 	int                 	                    
+pname               	string              	                    
+drug                	string              	                    
+gender              	string              	                    
+tot_amt             	int                 	                    
+	 	 
+Detailed Table Information	Table(tableName:patient, dbName:ofsa, owner:ak, createTime:1636386453, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:pid, type:int, comment:null), FieldSchema(name:pname, type:string, comment:null), FieldSchema(name:drug, type:string, comment:null), FieldSchema(name:gender, type:string, comment:null), FieldSchema(name:tot_amt, type:int, comment:null)], location:hdfs://localhost:9000/user/hive/warehouse/ofsa.db/patient, inputFormat:org.apache.hadoop.mapred.TextInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, parameters:{serialization.format=,, field.delim=,}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=537, numRows=0, rawDataSize=0, numFiles=1, transient_lastDdlTime=1636386808, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER)	
+Time taken: 0.105 seconds, Fetched: 7 row(s)
+hive> Display all 633 possibilities? (y or n)
+hive> select patient.* from patient join drug on patient.drug=drug.drug;
+FAILED: SemanticException [Error 10001]: Line 1:35 Table not found 'drug'
+hive> ak@ak:~$ 
+ak@ak:~$ hive
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ak/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ak/hadoop-2.10.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = be6d1345-37fe-4ec8-90eb-fcae6821e01a
+
+Logging initialized using configuration in jar:file:/home/ak/apache-hive-3.1.2-bin/lib/hive-common-3.1.2.jar!/hive-log4j2.properties Async: true
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Hive Session ID = 549a2b63-8c31-4d1c-aff5-8f875c21d021
+hive> create table patient(pid INT, pname STRING, drug STRING,gender string, 
+    > tot_amt INT) row format delimited fields terminated by ',' stored as textfile;
+OK
+Time taken: 1.767 seconds
+hive> select * from patient
+    > ;
+OK
+Time taken: 2.228 seconds
+hive> load data local inpath '/home/ak/datasets/patient.txt' into table patient;
+Loading data to table default.patient
+OK
+Time taken: 0.635 seconds
+hive> create table drug(drug STRING,gender string,tot_amt INT) row format delimited fields terminated by ',' stored as textfile; 
+OK
+Time taken: 0.194 seconds
+hive> load data inpath '/asutosh/drug.txt ' into table drug;
+FAILED: SemanticException Line 1:17 Invalid path ''/asutosh/drug.txt '': No files matching path hdfs://localhost:9000/asutosh/drug.txt%20
+hive> load data inpath '/lts/drug.txt ' into table drug;
+FAILED: SemanticException Line 1:17 Invalid path ''/lts/drug.txt '': No files matching path hdfs://localhost:9000/lts/drug.txt%20
+hive> load data inpath '/asutosh/drug.txt ' into table drug;
+FAILED: SemanticException Line 1:17 Invalid path ''/asutosh/drug.txt '': No files matching path hdfs://localhost:9000/asutosh/drug.txt%20
+hive> load data inpath '/asutosh/drug.txt ' into table drug;
+FAILED: SemanticException Line 1:17 Invalid path ''/asutosh/drug.txt '': No files matching path hdfs://localhost:9000/asutosh/drug.txt%20
+hive> load data inpath '/asutosh/drug.txt' into table drug;
+Loading data to table default.drug
+OK
+Time taken: 0.439 seconds
+hive> select patient.* from patient join drug on patient.drug=drug.drug;
+Query ID = ak_20211108221010_c76474e3-db63-4024-abe1-7f26d25c5ab4
+Total jobs = 1
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1636353910963_0006, Tracking URL = http://ak:8088/proxy/application_1636353910963_0006/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0006
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-11-08 22:10:34,370 Stage-3 map = 0%,  reduce = 0%
+2021-11-08 22:10:40,656 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 2.42 sec
+MapReduce Total cumulative CPU time: 2 seconds 420 msec
+Ended Job = job_1636353910963_0006
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 2.42 sec   HDFS Read: 9892 HDFS Write: 1965 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 420 msec
+OK
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+Time taken: 31.082 seconds, Fetched: 60 row(s)
+hive> select drug.* from patient join drug on patient.drug=drug.drug;
+Query ID = ak_20211108221157_eafcd3f5-40b1-4b23-91b8-7a488053fed7
+Total jobs = 1
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1636353910963_0007, Tracking URL = http://ak:8088/proxy/application_1636353910963_0007/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0007
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-11-08 22:12:15,085 Stage-3 map = 0%,  reduce = 0%
+2021-11-08 22:12:23,426 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 3.15 sec
+MapReduce Total cumulative CPU time: 3 seconds 150 msec
+Ended Job = job_1636353910963_0007
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 3.15 sec   HDFS Read: 9647 HDFS Write: 1545 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 150 msec
+OK
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+metacin	m2	800
+Crocin	f3	600
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+calpol	f5	500
+hcq	m6	500
+hcq	m7	600
+hcq	m6	500
+hcq	m7	600
+cetzine	m8	700
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+metacin	m2	800
+Crocin	f3	600
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+calpol	f5	500
+hcq	m6	500
+hcq	m7	600
+hcq	m6	500
+hcq	m7	600
+cetzine	m8	700
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+metacin	m2	800
+Crocin	f3	600
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+calpol	f5	500
+hcq	m6	500
+hcq	m7	600
+hcq	m6	500
+hcq	m7	600
+cetzine	m8	700
+Para	m1	900
+Para	f4	999
+Para	m9	444
+Para	m3	500
+Time taken: 27.06 seconds, Fetched: 60 row(s)
+hive> select p.* from patient p  join drug1 d  on p.drug=d.drug;
+FAILED: SemanticException [Error 10001]: Line 1:32 Table not found 'drug1'
+hive> select p.* from patient p  join drug d  on p.drug=d.drug;
+Query ID = ak_20211108221708_859ebab7-77a9-46b7-b6d8-383508645177
+Total jobs = 1
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1636353910963_0008, Tracking URL = http://ak:8088/proxy/application_1636353910963_0008/
+Kill Command = /home/ak/hadoop-2.10.1/bin/mapred job  -kill job_1636353910963_0008
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-11-08 22:17:31,811 Stage-3 map = 0%,  reduce = 0%
+2021-11-08 22:17:39,117 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 2.75 sec
+MapReduce Total cumulative CPU time: 2 seconds 750 msec
+Ended Job = job_1636353910963_0008
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 2.75 sec   HDFS Read: 9878 HDFS Write: 1965 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 750 msec
+OK
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	Para	m	900
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	Para	m	500
+111	aaa	metacin	m	800
+222	bbb	Crocin	f	600
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+222	bbb	Para	f	999
+333	ccc	calpol	f	500
+444	ddd	hcq	m	500
+444	ddd	hcq	m	500
+111	aaa	hcq	m	600
+111	aaa	hcq	m	600
+555	eee	cetzine	m	700
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+333	ccc	Para	m	444
+Time taken: 31.386 seconds, Fetched: 60 row(s)
+hive> ak@ak:~$ 
+
+hive> ak@ak:~$ 
+ak@ak:~$ hdfs dfs -mkdir -p 2021/11/08
+ak@ak:~$ 
+
