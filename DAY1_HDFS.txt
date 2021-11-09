@@ -1,0 +1,180 @@
+ak@ak:~$ jps
+4497 Jps
+ak@ak:~$ jps
+4509 Jps
+ak@ak:~$ start-all.sh
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-namenode-ak.out
+localhost: starting datanode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-datanode-ak.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/ak/hadoop-2.10.1/logs/hadoop-ak-secondarynamenode-ak.out
+starting yarn daemons
+starting resourcemanager, logging to /home/ak/hadoop-2.10.1/logs/yarn-ak-resourcemanager-ak.out
+localhost: starting nodemanager, logging to /home/ak/hadoop-2.10.1/logs/yarn-ak-nodemanager-ak.out
+ak@ak:~$ jps
+5346 NodeManager
+5081 SecondaryNameNode
+4697 NameNode
+5659 Jps
+4844 DataNode
+5214 ResourceManager
+ak@ak:~$ jps
+5346 NodeManager
+5081 SecondaryNameNode
+4697 NameNode
+4844 DataNode
+6316 Jps
+5214 ResourceManager
+ak@ak:~$ hdfs dfs -mkdir /asutosh
+ak@ak:~$ hdfs dfs
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+ak@ak:~$ hadoop fs
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+ak@ak:~$ hdfs dfs -copyFromLocal /home/ak/datasets/emp.csv /asutosh
+ak@ak:~$ hdfs dfs -put /home/ak/datasets/emp.csv /asutosh
+put: `/asutosh/emp.csv': File exists
+ak@ak:~$ hdfs dfs -put -f /home/ak/datasets/emp.csv /asutosh
+ak@ak:~$ hdfs dfs -mkdir day1
+ak@ak:~$ hdfs dfs -setrep 2 /asutosh/emp.csv
+Replication 2 set: /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -setrep 3 /asutosh/emp.csv
+Replication 3 set: /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -put /home/ak/hadoop.zip day1
+ak@ak:~$ hdfs dfs -put /home/ak/hadoop.zip /asutosh
+ak@ak:~$ hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:18 /asutosh
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 /demo
+drwx-wx-wx   - ak supergroup          0 2021-10-30 15:09 /tmp
+drwxr-xr-x   - ak supergroup          0 2021-10-30 15:07 /user
+ak@ak:~$ hdfs dfs -rm /asutosh/emp.csv
+Deleted /asutosh/emp.csv
+ak@ak:~$ hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:24 /asutosh
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 /demo
+drwx-wx-wx   - ak supergroup          0 2021-10-30 15:09 /tmp
+drwxr-xr-x   - ak supergroup          0 2021-10-30 15:07 /user
+ak@ak:~$ hdfs dfs -ls 
+Found 2 items
+drwxr-xr-x   - ak supergroup          0 2021-11-08 15:06 day1
+drwxr-xr-x   - ak supergroup          0 2021-10-30 13:38 test
+ak@ak:~$ hdfs dfs -cp /asutosh/ /ak
+ak@ak:~$ hdfs dfs -put -f /home/ak/datasets/superstore.csv /asutosh
+ak@ak:~$ pwd
+/home/ak
+ak@ak:~$ hdfs dfs -appendToFile /home/ak/hadoop.zip /asutosh
+appendToFile: Cannot append to directory /asutosh; already exists as a directory.
+ak@ak:~$ hdfs dfs -appendToFile /home/ak/hadoop.zip /asutosh/hadoop.zip
+ak@ak:~$ hdfs dfs -get /asutosh/superstore.csv /home
+get: /home/superstore.csv._COPYING_ (Permission denied)
+
+ak@ak:~$ hdfs dfs -mkdir -p 2021/11/08
+ak@ak:~$ 
